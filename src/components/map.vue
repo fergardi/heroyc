@@ -5,6 +5,7 @@
 
 <script>
 import Mapbox from 'mapbox-gl-vue'
+import db from '../services/firebase'
 
 export default {
   name: 'world-map',
@@ -28,6 +29,11 @@ export default {
         attributionControl: false
       }
     }
+  },
+  mounted () {
+    db.ref('places').on('child_added', (place) => {
+      console.log(place.val())
+    })
   }
 }
 </script>
