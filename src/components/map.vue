@@ -33,7 +33,6 @@ export default {
   },
   mounted () {
     db.ref('places').on('child_added', (place) => {
-      console.log(place.val())
     })
   }
 }
