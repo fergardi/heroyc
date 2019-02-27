@@ -13,12 +13,6 @@ export default {
   },
   data () {
     return {
-      map: null,
-      popup: false,
-      selected: {
-        src: '',
-        name: ''
-      },
       token: 'pk.eyJ1IjoiZmVyZ2FyZGkiLCJhIjoiY2lxdWl1enJiMDAzaWh4bTNwY3F6MnNwdiJ9.fPkJoOfrARPtZWCj1ehyCQ',
       options: {
         zoom: 12,
