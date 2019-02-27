@@ -7,7 +7,6 @@
 import map from '../components/map'
 
 export default {
-  name: 'world',
   components: {
     'world-map': map
   }
