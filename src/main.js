@@ -4,6 +4,9 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 
+// mapbox
+window.mapboxgl = require('mapbox-gl')
+
 Vue.config.productionTip = false
 
 new Vue({
