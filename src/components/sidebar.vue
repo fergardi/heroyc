@@ -2,7 +2,7 @@
   .sidebar
     vs-sidebar#sidebar(:reduce="reduce", :reduce-not-hover-expand="!reduce", parent="#app", default-index="1", color="primary", spacer, v-model="opened")
       .header-sidebar(slot="header")
-        vs-avatar(size="70px", src="https://randomuser.me/api/portraits/men/85.jpg")
+        vs-avatar(size="70px", src="https://randomuser.me/api/portraits/men/85.jpg", badge="1")
         h4
           span Fergardi
       vs-divider Hola
@@ -40,14 +40,4 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  #sidebar
-    .vs-divider
-      background url('../assets/img/gui/subtitle.png')
-      background-position center
-      background-repeat no-repeat
-      background-size contain
-      height 60px
-      /deep/ .vs-divider--text
-        background transparent
-        color #fff !important
 </style>

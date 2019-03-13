@@ -23,6 +23,10 @@ Vue.use(Vuesax, {
   }
 })
 
+Vue.filter('number', (value) => {
+  return value.toLocaleString('es')
+})
+
 // firebase
 Vue.use(VueFire)
 
