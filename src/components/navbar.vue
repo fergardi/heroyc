@@ -4,6 +4,8 @@
       vs-tab(vs-label="World", vs-icon="pets", @click="goTo('world')")
       vs-tab(vs-label="Character", vs-icon="account_balance", @click="goTo('character')")
       vs-tab(vs-label="Tavern", vs-icon="dashboard", @click="goTo('tavern')")
+      vs-tab(vs-label="Shop", vs-icon="dashboard", @click="goTo('shop')")
+      vs-tab(vs-label="Dungeon", vs-icon="dashboard", @click="goTo('dungeon')")
 </template>
 
 <script>
@@ -26,7 +28,7 @@ export default {
     right 0
     left 0
     background white
-    box-shadow 0 -4px 25px 0 rgba(0,0,0,.1)
+    box-shadow 0 -4px 25px 0 rgba(0, 0, 0, .1)
     /deep/ .con-ul-tabs .vs-tabs--li button
       display flex
       align-items center
