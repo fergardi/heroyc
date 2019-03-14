@@ -8,7 +8,6 @@ import VueFire from 'vuefire'
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css'
 import 'material-icons/iconfont/material-icons.css'
-import 'mapbox-gl/dist/mapbox-gl.css'
 
 // UI framework
 Vue.use(Vuesax, {
@@ -31,7 +30,7 @@ Vue.filter('number', (value) => {
 Vue.use(VueFire)
 
 // mapbox
-window.mapboxgl = require('mapbox-gl')
+// window.mapboxgl = require('mapbox-gl')
 
 // production
 Vue.config.productionTip = false

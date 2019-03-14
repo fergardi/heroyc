@@ -1,29 +1,22 @@
 <template lang="pug">
   #app
-    side-bar(:sidebar.sync="sidebar")
-    vs-button#toggler(color="primary", size="small", type="filled", icon="settings", @click.prevent.stop="sidebar=true")
     #content
       router-view
+    nav-bar
 </template>
 
 <script>
-import SideBar from './components/sidebar'
+import NavBar from './components/navbar'
 
 export default {
   components: {
-    'side-bar': SideBar
-  },
-  data () {
-    return {
-      sidebar: false
-    }
+    'nav-bar': NavBar
   }
 }
 </script>
 
 <style lang="stylus">
-  @import url('https://fonts.googleapis.com/css?family=Montserrat:100|Open+Sans');
-
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:100|Open+Sans')
   html
   body
   #app
@@ -33,13 +26,8 @@ export default {
     margin 0
     padding 0
     font-family 'Open Sans', sans-serif
-    #toggler
-      position absolute
-      bottom 10px
-      left 10px
-      z-index 999
     #content
-      height 100vh
+      height calc(100vh - 70px) // minus bottom navbar
       width 100vw
       overflow-x hidden
       overflow-y auto
