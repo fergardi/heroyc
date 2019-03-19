@@ -8,6 +8,7 @@ import VueFire from 'vuefire'
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css'
 import 'material-icons/iconfont/material-icons.css'
+import 'animate.css/animate.min.css'
 
 // UI framework
 Vue.use(Vuesax, {

@@ -1,7 +1,8 @@
 <template lang="pug">
   #app
     #content
-      router-view
+      transition(appear, mode="in-out", appear-active-class="animated fadeIn", enter-active-class="animated fadeIn", leave-active-class="animated fadeOut")
+        router-view
     nav-bar
 </template>
 

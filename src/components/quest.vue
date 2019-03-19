@@ -38,20 +38,7 @@ export default {
   },
   methods: {
     select () {
-      this.$vs.dialog({
-        type: 'confirm',
-        color: 'success',
-        title: 'Dialog',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        accept: this.accept
-      })
-    },
-    accept () {
-      this.$vs.notify({
-        color: 'success',
-        title: 'Accept Selected',
-        text: 'Lorem ipsum dolor sit amet, consectetur'
-      })
+      this.$emit('tavern-quest-selected')
     }
   },
   computed: {

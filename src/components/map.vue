@@ -1,14 +1,12 @@
 <template lang="pug">
   .map
     map-box#map(:access-token="token", :map-style="style", :bearing="bearing", :pitch="pitch", :zoom="zoom", :attribution-control="false", :center="center", @click="click", @load="load")
-      map-marker(v-for="(marker, index) in markers", :key="index", :coordinates="marker.coordinates", :id="marker.id")
-        div.wrapper(slot="marker")
-          component(:is="marker.type")
+      component(v-for="(marker, index) in markers", :key="index", :is="marker.type", :data="marker")
 </template>
 
 <script>
 import Mapbox from 'mapbox-gl'
-import { MglMap, MglMarker } from 'vue-mapbox'
+import { MglMap } from 'vue-mapbox'
 import db from '../services/firebase'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
@@ -16,7 +14,6 @@ export default {
   name: 'world-map',
   components: {
     'map-box': MglMap,
-    'map-marker': MglMarker,
     'marker-shop': () => import('./markers/shop'),
     'marker-dungeon': () => import('./markers/dungeon'),
     'marker-tavern': () => import('./markers/tavern'),
@@ -42,11 +39,10 @@ export default {
   mounted () {
     this.$vs.loading({ type: 'radius', text: 'Loading...' })
     setTimeout(() => {
-      this.markers = this.markers.concat(new Array(1).fill({ type: 'marker-shop', coordinates: [-5.575772745253971, 42.59257178934649] }))
-      this.markers = this.markers.concat(new Array(1).fill({ type: 'marker-dungeon', coordinates: [-5.574666885953036, 42.66354267483237] }))
-      this.markers = this.markers.concat(new Array(1).fill({ type: 'marker-village', coordinates: [-5.596917721920249, 42.581961827553755] }))
-      this.markers = this.markers.concat(new Array(1).fill({ type: 'marker-tavern', coordinates: [-5.57605099064881, 42.63478961599586] }))
-      this.markers = this.markers.concat(new Array(1).fill({ type: 'marker-player', coordinates: [-5.5795430999999995, 42.5821452] }))
+      this.markers = this.markers.concat([...Array(1)].map((index) => { return { id: index, type: 'marker-shop', coordinates: this.random() } }))
+      this.markers = this.markers.concat([...Array(1)].map((index) => { return { id: index, type: 'marker-tavern', coordinates: this.random() } }))
+      this.markers = this.markers.concat([...Array(1)].map((index) => { return { id: index, type: 'marker-dungeon', coordinates: this.random() } }))
+      this.markers = this.markers.concat([...Array(1)].map((index) => { return { id: index, type: 'marker-village', coordinates: this.random() } }))
       this.$vs.loading.close()
     }, 2000)
     db.ref('places').on('child_added', (place) => {
@@ -59,11 +55,21 @@ export default {
     },
     load (e) {
       this.map = e.map
-      this.rotateCamera(0)
+      // this.rotateCamera(0)
     },
     rotateCamera (timestamp) {
       this.map.rotateTo((timestamp / 100) % 360, { duration: 0 })
       requestAnimationFrame(this.rotateCamera)
+    },
+    random () {
+      let minLat = 42.62
+      let maxLat = 42.61
+      let minLng = -5.58
+      let maxLng = -5.57
+      let lat = Math.random() * (maxLat - minLat) + minLat
+      let lng = Math.random() * (maxLng - minLng) + minLng
+      let coordinates = [lng, lat]
+      return coordinates
     }
   }
 }
@@ -76,4 +82,17 @@ export default {
       height calc(100vh - 70px)
       /deep/ .con-vs-chip
         margin 0 !important
+        box-shadow 0 4px 25px 0 rgba(0,0,0,.1)
+      /deep/ .con-vs-chip .con-vs-avatar
+        width 36px
+        height 36px
+      /deep/ .mapboxgl-popup-tip
+        visibility hidden
+        margin 5px
+      /deep/ .mapboxgl-popup-content
+        max-width 250px
+        position relative
+        background transparent
+        padding 0
+        box-shadow none
 </style>
