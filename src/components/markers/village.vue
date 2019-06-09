@@ -1,7 +1,7 @@
 <template lang="pug">
   .marker-village
     map-marker(:coordinates="data.coordinates", :id="data.id")
-      map-popup(:closeButton="false")
+      map-popup(:closeButton="false", :showed="false")
         vs-card
           div(slot='header')
             h3 Hello world !
