@@ -1,19 +1,28 @@
 <template lang="pug">
   .navbar
-    vs-tabs(color="primary", vs-alignment="fixed")
-      vs-tab(vs-label="World", vs-icon="pets", @click="goTo('world')")
-      vs-tab(vs-label="Character", vs-icon="account_balance", @click="goTo('character')")
-      vs-tab(vs-label="Tavern", vs-icon="dashboard", @click="goTo('tavern')")
-      vs-tab(vs-label="Shop", vs-icon="dashboard", @click="goTo('shop')")
-      vs-tab(vs-label="Dungeon", vs-icon="dashboard", @click="goTo('dungeon')")
+    vs-navbar.nabarx(v-model="active", type="shadow")
+      div(slot='title')
+        vs-navbar-title {{ title }}
+      vs-navbar-item(v-for="(route, index) in routes", :index="index", :key="index")
+        router-link(tag="a" :to="route.path") {{ route.name }}
 </template>
 
 <script>
+import router from '../router'
+
 export default {
   name: 'nav-bar',
-  methods: {
-    goTo (url) {
-      this.$router.push(url)
+  data () {
+    return {
+      active: 0
+    }
+  },
+  computed: {
+    routes () {
+      return router.options.routes.filter(route => route.navbar)
+    },
+    title () {
+      return this.routes[this.active].name
     }
   }
 }
@@ -22,9 +31,8 @@ export default {
 <style lang="stylus" scoped>
   .navbar
     z-index 9999
-    height 70px
     position absolute
-    bottom 0
+    top 0
     right 0
     left 0
     background white

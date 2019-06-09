@@ -79,7 +79,7 @@ export default {
   .map
     #map
       width 100vw
-      height calc(100vh - 70px)
+      height 100vh
       /deep/ .con-vs-chip
         margin 0 !important
         box-shadow 0 4px 25px 0 rgba(0,0,0,.1)
@@ -95,4 +95,7 @@ export default {
         background transparent
         padding 0
         box-shadow none
+    @media screen and (max-width: 600px)
+      #map
+        height calc(100vh - 38px)
 </style>

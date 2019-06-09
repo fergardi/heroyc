@@ -1,39 +1,27 @@
 <template lang="pug">
   .sidebar
-    vs-sidebar#sidebar(:reduce="reduce", :reduce-not-hover-expand="!reduce", parent="#app", default-index="1", color="primary", spacer, v-model="opened")
+    vs-sidebar#sidebar(parent="#sidebar", default-index="0", hidden-background, color="primary", spacer, v-model="opened")
       .header-sidebar(slot="header")
         vs-avatar(size="70px", src="https://randomuser.me/api/portraits/men/85.jpg", badge="1")
         h4
           span Fergardi
       vs-divider Hola
-      vs-sidebar-item(index="1", to="/world", icon="public", @click="opened=false") World
-      vs-sidebar-item(index="2", to="/character", icon="face", @click="opened=false") Character
-      vs-sidebar-item(index="3", to="/tavern", icon="home", @click="opened=false") Tavern
-      vs-sidebar-item(index="4", to="/shop", icon="shopping_cart", @click="opened=false") Shop
+      vs-sidebar-item(v-for="(route, index) in routes", :key="route.index", :index="index", :to="route.path", :icon="route.icon") {{ route.name }}
 </template>
 
 <script>
+import router from '../router'
+
 export default {
   name: 'side-bar',
-  props: {
-    sidebar: {
-      type: Boolean,
-      default: false
-    }
-  },
   data () {
     return {
-      reduce: false
+      opened: true
     }
   },
   computed: {
-    opened: {
-      get () {
-        return this.sidebar
-      },
-      set (value) {
-        this.$emit('update:sidebar', value)
-      }
+    routes () {
+      return router.options.routes.filter(route => route.sidebar)
     }
   }
 }
