@@ -4,13 +4,16 @@
       h1 Research
     vs-row(vs-align="center", vs-justify="flex-start")
       vs-col(vs-lg="3", vs-sm="4", vs-xs="6", v-for="(research, index) in researches", :key="index")
-        .slot(@click="select(research.id)")
-          vs-avatar(size="large", :src="require(`../assets/img/armor/example.png`)")
-          vs-chip(:color="research.rarity") {{ research.name }}
+        magic-spell(:info="research", @research-spell-selected="select(research.id)")
 </template>
 
 <script>
+import MagicSpell from '../components/spell'
+
 export default {
+  components: {
+    'magic-spell': MagicSpell
+  },
   data () {
     return {
       researches: []
@@ -19,7 +22,7 @@ export default {
   mounted () {
     this.$vs.loading({ type: 'radius', text: 'Loading...' })
     setTimeout(() => {
-      this.researches = new Array(10).fill({ id: 3, name: 'Hechizo', type: 'armor', image: 'example.png', rarity: 'primary' })
+      this.researches = new Array(2).fill({ id: 3, name: 'Hechizo', type: 'armor', image: 'example.png', color: 'darkness' })
       this.$vs.loading.close()
     }, 2000)
   },
@@ -46,12 +49,5 @@ export default {
 
 <style lang="stylus" scoped>
   .research
-    padding 10px
-    .vs-row
-      margin-bottom 20px
-    .slot
-      display flex
-      justify-content center
-      align-items center
-      flex-direction column
+    padding 5px
 </style>

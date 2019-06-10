@@ -1,8 +1,8 @@
 <template lang="pug">
-  .quest
-    vs-card(actionable)
+  .spell
+    vs-card(actionable, :class="info.color")
       div(slot="header")
-        h3 {{ info.name }}
+        h4 {{ info.name }}
       div(slot="media")
         img(src="https://lusaxweb.github.io/vuesax/card.png")
       div
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'map-quest',
+  name: 'magic-spell',
   props: {
     info: {
       type: Object,
@@ -30,30 +30,37 @@ export default {
       default: () => {
         return {
           name: null,
-          gold: null,
-          experience: null
+          color: null,
+          experience: null,
+          level: null,
+          image: null
         }
       }
     }
   },
   methods: {
     select () {
-      this.$emit('tavern-quest-selected')
+      this.$emit('research-spell-selected')
     }
   },
   computed: {
     extra () {
-      return this.info.gold || this.info.experience
+      return this.info.experience || this.info.level
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-  .quest
+  .spell
     margin 5px
     .extra
       display flex
       justify-content center
       flex-wrap wrap
+    /deep/ .con-vs-card
+      &.darkness
+        .vs-card--header
+          background-color red
+          color #fff
 </style>
