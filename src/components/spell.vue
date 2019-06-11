@@ -7,16 +7,11 @@
         img(src="https://lusaxweb.github.io/vuesax/card.png")
       div
         span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      div.extra(slot="extra-content", v-if="extra")
-        vs-chip(color="warning")
-          vs-avatar(icon="attach_money")
-          span {{ info.gold | number }}
-        vs-chip(color="primary")
-          vs-avatar(icon="star")
-          span {{ info.experience | number }}
+        vs-progress(:percent="info.researched * 100 / info.turns", color="primary")
+      // div.extra(slot="extra-content")
       div(slot="footer")
         vs-row(vs-justify="flex-end")
-          vs-button(color="success", icon="check", @click="select")
+          vs-button(color="success", icon-pack="ra", icon="ra-sword", @click="select")
           vs-button(color="danger", icon="close")
 </template>
 
@@ -40,12 +35,7 @@ export default {
   },
   methods: {
     select () {
-      this.$emit('research-spell-selected')
-    }
-  },
-  computed: {
-    extra () {
-      return this.info.experience || this.info.level
+      this.$emit('university-spell-selected')
     }
   }
 }
@@ -59,8 +49,19 @@ export default {
       justify-content center
       flex-wrap wrap
     /deep/ .con-vs-card
-      &.darkness
-        .vs-card--header
-          background-color red
-          color #fff
+      &.wind
+        background-color var(--wind)
+        color #000
+      &.fire
+        background-color var(--fire)
+        color #fff
+      &.earth
+        background-color var(--earth)
+        color #fff
+      &.lightning
+        background-color var(--lightning)
+        color #fff
+      &.water
+        background-color var(--water)
+        color #fff
 </style>

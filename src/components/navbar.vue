@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import router from '../router'
+import router from '@/services/router'
 
 export default {
   name: 'nav-bar',

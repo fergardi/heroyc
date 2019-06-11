@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import GameItem from '../components/item'
+import GameItem from '@/components/item'
 
 export default {
   components: {

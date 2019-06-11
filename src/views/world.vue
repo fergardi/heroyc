@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import map from '../components/map'
+import map from '@/components/map'
 
 export default {
   components: {

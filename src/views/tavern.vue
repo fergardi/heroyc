@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import MapQuest from '../components/quest'
+import MapQuest from '@/components/quest'
 
 export default {
   components: {
@@ -49,5 +49,5 @@ export default {
 
 <style lang="stylus" scoped>
   .tavern
-    padding 5px
+    padding 10px
 </style>
