@@ -55,6 +55,7 @@ export default {
       display block
     #navbar
       display none
+    // media queries
     @media screen and (max-width: 600px)
       #content
         height calc(100vh - 38px) // navbar

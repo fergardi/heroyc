@@ -14,7 +14,7 @@ import 'rpg-awesome/css/rpg-awesome.min.css'
 let wind = '#d8d8d8'
 let earth = '#035129'
 let lightning = '#7b0082'
-let fire = '#6d0d0d'
+let fire = '#911b1b'
 let water = '#044d56'
 // global css variables
 document.documentElement.style.setProperty('--wind', wind)

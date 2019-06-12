@@ -1,44 +1,63 @@
 <template lang="pug">
-  div.village
+  // VIEW
+  .village
+    // TITLE
     .title
       h1 Village
+    // BUILDINGS
     vs-row(vs-align="center", vs-justify="flex-start")
       vs-col(vs-lg="3", vs-sm="4", vs-xs="6", v-for="(building, index) in buildings", :key="index")
-        .slot(@click="select(building.id)")
-          vs-avatar(size="100px", :src="require(`../assets/img/armor/example.png`)", badge="999")
-          vs-chip(:color="building.rarity") {{ building.name }}
+        village-building(:info="building", @village-building-selected="showConstructDialog(building.id)")
+    // PROMPT
+    vs-prompt(@vs-cancel="resetDialogs", @vs-close="resetDialogs", @vs-accept="constructBuilding", :vs-active.sync="constructDialog", vs-title="Dialog")
+      span Turns
+      vs-input-number(v-model="turns", icon-inc="expand_less", icon-dec="expand_more", label="Turns:")
 </template>
 
 <script>
+import VillageBuilding from '@/components/building'
+
 export default {
+  components: {
+    'village-building': VillageBuilding
+  },
   data () {
     return {
-      buildings: []
+      buildings: [],
+      constructDialog: false,
+      selectedBuilding: null,
+      turns: 0
     }
   },
   mounted () {
     this.$vs.loading({ type: 'radius', text: 'Loading...' })
     setTimeout(() => {
-      this.buildings = new Array(10).fill({ id: 3, name: 'Edificio', type: 'armor', image: 'example.png', rarity: 'primary' })
+      this.buildings = [
+        { id: 1, name: 'lbl_building_fire_fireball', image: 'https://pp.userapi.com/c638117/v638117348/22ece/6FjIKxpnUh0.jpg', color: 'fire', level: 1, completed: false, turns: 300, researched: 30 },
+        { id: 2, name: 'lbl_building_fire_firewall', image: 'http://media.wizards.com/2017/images/daily/cardart_EMA_Pyroblast_Lg.jpg', color: 'fire', level: 1, completed: false, turns: 300, researched: 30 }
+        /*
+        { id: 3, name: 'Hechizo', color: 'earth' },
+        { id: 3, name: 'Hechizo', color: 'lightning' },
+        { id: 3, name: 'Hechizo', color: 'fire' },
+        { id: 3, name: 'Hechizo', color: 'water' }
+        */
+      ]
       this.$vs.loading.close()
     }, 2000)
   },
   methods: {
-    select (id) {
-      this.$vs.dialog({
-        type: 'confirm',
-        color: 'success',
-        title: 'Dialog',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ' + id,
-        accept: this.accept
-      })
+    showConstructDialog (id) {
+      this.selectedBuilding = id
+      this.constructDialog = true
+      this.turns = 0
     },
-    accept () {
-      this.$vs.notify({
-        color: 'success',
-        title: 'Accept Selected',
-        text: 'Lorem ipsum dolor sit amet, consectetur'
-      })
+    constructBuilding () {
+      // TODO
+    },
+    resetDialogs () {
+      this.turns = 0
+      this.constructDialog = false
+      this.selectedBuilding = null
     }
   }
 }
@@ -46,21 +65,5 @@ export default {
 
 <style lang="stylus" scoped>
   .village
-    height 100%
-    width 100%
-    /*
-    background url('https://cdna.artstation.com/p/assets/images/images/001/233/444/large/_-understroke-pirate-bg-222.jpg?1551282874') no-repeat center center fixed
-    -webkit-background-size cover
-    -moz-background-size cover
-    -o-background-size cover
-    background-size cover
-    */
     padding 10px
-    .vs-row
-      margin-bottom 20px
-    .slot
-      display flex
-      justify-content center
-      align-items center
-      flex-direction column
 </style>

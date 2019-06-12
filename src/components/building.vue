@@ -1,5 +1,5 @@
 <template lang="pug">
-  .spell
+  .building
     vs-card(actionable, :class="info.color")
       div(slot="header")
         h4 {{ info.name }}
@@ -7,7 +7,6 @@
         img(:src="info.image")
       div
         span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        vs-progress(:percent="info.researched * 100 / info.turns", color="primary")
       div.extra(slot="extra-content")
         vs-chip(color="warning")
           vs-avatar(icon="attach_money")
@@ -23,7 +22,7 @@
 
 <script>
 export default {
-  name: 'magic-spell',
+  name: 'village-building',
   props: {
     info: {
       type: Object,
@@ -41,14 +40,14 @@ export default {
   },
   methods: {
     select () {
-      this.$emit('university-spell-selected')
+      this.$emit('village-building-selected')
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-  .spell
+  .building
     margin 5px
     .extra
       display flex

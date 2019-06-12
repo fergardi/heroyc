@@ -56,6 +56,7 @@ export default {
     load (e) {
       this.map = e.map
       // this.rotateCamera(0)
+      this.drawRadius()
     },
     rotateCamera (timestamp) {
       this.map.rotateTo((timestamp / 100) % 360, { duration: 0 })
@@ -70,6 +71,51 @@ export default {
       let lng = Math.random() * (maxLng - minLng) + minLng
       let coordinates = [lng, lat]
       return coordinates
+    },
+    createRadius (center, radiusInKm, points) {
+      if (!points) points = 64
+      let coords = {
+        latitude: center[1],
+        longitude: center[0]
+      }
+      let km = radiusInKm
+      let ret = []
+      let distanceX = km / (111.320 * Math.cos(coords.latitude * Math.PI / 180))
+      let distanceY = km / 110.574
+      let theta, x, y
+      for (let i = 0; i < points; i++) {
+        theta = (i / points) * (2 * Math.PI)
+        x = distanceX * Math.cos(theta)
+        y = distanceY * Math.sin(theta)
+        ret.push([coords.longitude + x, coords.latitude + y])
+      }
+      ret.push(ret[0])
+      return {
+        'type': 'geojson',
+        'data': {
+          'type': 'FeatureCollection',
+          'features': [{
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              'coordinates': [ret]
+            }
+          }]
+        }
+      }
+    },
+    drawRadius () {
+      this.map.addSource('polygon', this.createRadius(this.center, 0.5))
+      this.map.addLayer({
+        'id': 'polygon',
+        'type': 'fill',
+        'source': 'polygon',
+        'layout': {},
+        'paint': {
+          'fill-color': 'blue',
+          'fill-opacity': 0.6
+        }
+      })
     }
   }
 }

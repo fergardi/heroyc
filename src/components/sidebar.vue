@@ -28,4 +28,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  .sidebar
+    /deep/ .vs-content-sidebar
+      .header-sidebar
+        display flex
+        justify-content center
 </style>
