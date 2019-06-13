@@ -3,9 +3,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './services/router'
 import store from './services/store'
-import './services/registerServiceWorker'
 import VueFire from 'vuefire'
 import Vuesax from 'vuesax'
+import VueI18n from 'vue-i18n'
+import { languages } from './i18n/index.js'
+import { defaultLocale } from './i18n/index.js'
+import './services/registerServiceWorker'
 import 'vuesax/dist/vuesax.css'
 import 'material-icons/iconfont/material-icons.css'
 import 'animate.css/animate.min.css'
@@ -40,6 +43,13 @@ Vue.filter('number', (value) => {
 })
 // firebase
 Vue.use(VueFire)
+// i18n
+const messages = Object.assign(languages)
+var i18n = new VueI18n({
+  locale: defaultLocale,
+  fallbackLocale: 'de',
+  messages
+})
 // mapbox
 // window.mapboxgl = require('mapbox-gl')
 // production
@@ -48,5 +58,6 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount('#app')
