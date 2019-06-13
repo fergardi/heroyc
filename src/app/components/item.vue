@@ -4,7 +4,7 @@
       div(slot="header")
         h3 Item 1
       div(slot="media")
-        img(:src="require(`../assets/img/armor/example.png`)")
+        img(:src="require(`@/assets/img/armor/example.png`)")
       div
         span Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         vs-progress(:percent="100", color="primary") primary

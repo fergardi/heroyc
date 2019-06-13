@@ -7,18 +7,18 @@
 <script>
 import Mapbox from 'mapbox-gl'
 import { MglMap } from 'vue-mapbox'
-import db from '../services/firebase'
+import db from '@/database/firebase'
 import 'mapbox-gl/dist/mapbox-gl.css'
 
 export default {
   name: 'world-map',
   components: {
     'map-box': MglMap,
-    'marker-shop': () => import('./markers/shop'),
-    'marker-dungeon': () => import('./markers/dungeon'),
-    'marker-tavern': () => import('./markers/tavern'),
-    'marker-village': () => import('./markers/village'),
-    'marker-player': () => import('./markers/player')
+    'marker-shop': () => import('@/app/markers/shop'),
+    'marker-dungeon': () => import('@/app/markers/dungeon'),
+    'marker-tavern': () => import('@/app/markers/tavern'),
+    'marker-village': () => import('@/app/markers/village'),
+    'marker-player': () => import('@/app/markers/player')
   },
   data () {
     return {

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import MagicSpell from '@/components/spell'
+import MagicSpell from '@/app/components/spell'
 
 export default {
   components: {

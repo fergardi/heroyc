@@ -12,7 +12,7 @@
         vs-tr(:key="index", v-for="(tr, index) in data")
           vs-td(:data="data[index].name")
             vs-chip(color="primary")
-              vs-avatar(size="medium", :src="require(`../assets/img/${data[index].type}/${data[index].image}`)", badge="1")
+              vs-avatar(size="medium", :src="require(`@/assets/img/${data[index].type}/${data[index].image}`)", badge="1")
               span {{ data[index].name }}
           vs-td
             vs-chip(color="warning")
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import GameItem from '@/components/item'
+import GameItem from '@/app/components/item'
 
 export default {
   components: {

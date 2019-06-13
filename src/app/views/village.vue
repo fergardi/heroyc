@@ -5,7 +5,7 @@
     vs-row(vs-align="center", vs-justify="flex-start")
       vs-col(vs-lg="3", vs-sm="4", vs-xs="6", v-for="(building, index) in buildings", :key="index")
         .slot(@click="select(building.id)")
-          vs-avatar(size="100px", :src="require(`../assets/img/armor/example.png`)", badge="999")
+          vs-avatar(size="100px", :src="require(`@/assets/img/armor/example.png`)", badge="999")
           vs-chip(:color="building.rarity") {{ building.name }}
 </template>
 
