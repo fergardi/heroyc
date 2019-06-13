@@ -11,7 +11,7 @@
               vs-button(type='gradient', color='danger', icon='favorite')
       div.wrapper(slot="marker")
         vs-chip(color="primary")
-          vs-avatar(:src="require(`../../assets/img/armor/example.png`)", badge="1")
+          vs-avatar(:src="require(`@/assets/img/armor/example.png`)", badge="1")
           span Shop
 </template>
 

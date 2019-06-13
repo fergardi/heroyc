@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import MapQuest from '@/components/quest'
+import MapQuest from '@/app/components/quest'
 
 export default {
   components: {
