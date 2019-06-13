@@ -14,6 +14,7 @@ export default new Router({
     { path: '/dungeon', name: 'dungeon', component: () => import('@/app/views/dungeon.vue'), navbar: true, sidebar: true },
     { path: '/university', name: 'university', component: () => import('@/app/views/university.vue'), navbar: true, sidebar: true },
     { path: '/ladder', name: 'ladder', component: () => import('@/app/views/ladder.vue'), navbar: true, sidebar: true },
+    { path: '/login', name: 'login', component: () => import('@/app/views/login.vue'), navbar: true, sidebar: true },
     { path: '*', redirect: '/' }
   ]
 })
