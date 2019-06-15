@@ -8,7 +8,7 @@ export default new Router({
     { path: '/', redirect: '/world' },
     { path: '/world', name: 'world', component: () => import('@/app/views/world.vue'), navbar: true, sidebar: true },
     { path: '/tavern', name: 'tavern', component: () => import('@/app/views/tavern.vue'), navbar: true, sidebar: true },
-    { path: '/village', name: 'village', component: () => import('@/app/views/village.vue'), navbar: true, sidebar: true },
+    { path: '/kingdom', name: 'kingdom', component: () => import('@/app/views/kingdom.vue'), navbar: true, sidebar: true },
     { path: '/character', name: 'character', component: () => import('@/app/views/character.vue'), navbar: true, sidebar: true },
     { path: '/shop', name: 'shop', component: () => import('@/app/views/shop.vue'), navbar: true, sidebar: true },
     { path: '/dungeon', name: 'dungeon', component: () => import('@/app/views/dungeon.vue'), navbar: true, sidebar: true },

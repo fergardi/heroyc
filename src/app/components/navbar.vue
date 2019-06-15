@@ -1,6 +1,6 @@
 <template lang="pug">
   .navbar
-    vs-navbar.nabarx(v-model="active", type="shadow")
+    vs-navbar.nabarx(v-model="active", type="color")
       div(slot='title')
         vs-navbar-title {{ title }}
       vs-navbar-item(v-for="(route, index) in routes", :index="index", :key="index")

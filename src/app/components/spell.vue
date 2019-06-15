@@ -1,8 +1,8 @@
 <template lang="pug">
   .spell
-    vs-card(actionable, :class="info.color")
+    vs-card(actionable)
       div(slot="header")
-        h4 {{ info.name }}
+        vs-chip(:color='rgba(255,0,0,0)') {{ info.name }}
       div(slot="media")
         img(:src="info.image")
       div

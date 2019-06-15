@@ -3,12 +3,12 @@
   .login
     // SPELLS
     vs-row(vs-align="center", vs-justify="center")
-      vs-col(vs-lg="2", vs-sm="4", vs-xs="10")
+      vs-col(vs-lg="3", vs-sm="6", vs-xs="8")
         vs-card(actionable)
           div(slot="header")
             h3 Login
           div(slot="media")
-            img(src="https://lusaxweb.github.io/vuesax/card.png")
+            img(:src="require('@/assets/img/login/login.jpg')")
           div
             vs-input(label="Name", placeholder="Placeholder", v-model="username")
             vs-input(type="password", label="Password", placeholder="Disabled", v-model="password")
@@ -32,6 +32,11 @@ export default {
 <style lang="stylus" scoped>
   .login
     padding 10px
+    width 100%
+    height 100%
+    display flex
+    justify-content center
+    align-items center
     /deep/ .vs-con-input-label
       width: 100%
 </style>

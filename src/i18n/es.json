@@ -1,3 +1,44 @@
 {
-  "test": "español"
+  "building": {
+    "farm": {
+      "name": "Granjas",
+      "description": "Lorem Ipsum"
+    },
+    "terrain": {
+      "name": "Tierras",
+      "description": "Lorem Ipsum"
+    },
+    "temple": {
+      "name": "Templos",
+      "description": "Lorem Ipsum"
+    },
+    "village": {
+      "name": "Pueblos",
+      "description": "Lorem Ipsum"
+    },
+    "node": {
+      "name": "Nodos",
+      "description": "Lorem Ipsum"
+    },
+    "barrack": {
+      "name": "Barracones",
+      "description": "Lorem Ipsum"
+    },
+    "guild": {
+      "name": "Gremios",
+      "description": "Lorem Ipsum"
+    },
+    "workshop": {
+      "name": "Talleres",
+      "description": "Lorem Ipsum"
+    },
+    "barrier": {
+      "name": "Barreras",
+      "description": "Lorem Ipsum"
+    },
+    "fortress": {
+      "name": "Fortalezas",
+      "description": "Lorem Ipsum"
+    }
+  }
 }

@@ -1,12 +1,12 @@
 <template lang="pug">
   .building
-    vs-card(actionable, :class="info.color")
+    vs-card(actionable)
       div(slot="header")
-        h4 {{ info.name }}
+        h4 {{ info.name | t }}
       div(slot="media")
-        img(:src="info.image")
+        img(:src="require(`@/assets/img/buildings/${info.image}.jpg`)")
       div
-        span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        span {{ info.description | t }}
       div.extra(slot="extra-content")
         vs-chip(color="warning")
           vs-avatar(icon="attach_money")
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'village-building',
+  name: 'kingdom-building',
   props: {
     info: {
       type: Object,
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     select () {
-      this.$emit('village-building-selected')
+      this.$emit('kingdom-building-selected')
     }
   }
 }
@@ -53,20 +53,4 @@ export default {
       display flex
       justify-content center
       flex-wrap wrap
-    /deep/ .con-vs-card
-      &.wind
-        background-color var(--wind)
-        color #000
-      &.fire
-        background-color var(--fire)
-        color #fff
-      &.earth
-        background-color var(--earth)
-        color #fff
-      &.lightning
-        background-color var(--lightning)
-        color #fff
-      &.water
-        background-color var(--water)
-        color #fff
 </style>

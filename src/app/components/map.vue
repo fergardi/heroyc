@@ -39,10 +39,12 @@ export default {
   mounted () {
     this.$vs.loading({ type: 'radius', text: 'Loading...' })
     setTimeout(() => {
+      /*
       this.markers = this.markers.concat([...Array(1)].map((index) => { return { id: index, type: 'marker-shop', coordinates: this.random() } }))
       this.markers = this.markers.concat([...Array(1)].map((index) => { return { id: index, type: 'marker-tavern', coordinates: this.random() } }))
       this.markers = this.markers.concat([...Array(1)].map((index) => { return { id: index, type: 'marker-dungeon', coordinates: this.random() } }))
       this.markers = this.markers.concat([...Array(1)].map((index) => { return { id: index, type: 'marker-village', coordinates: this.random() } }))
+      */
       this.$vs.loading.close()
     }, 2000)
     db.ref('places').on('child_added', (place) => {
@@ -56,7 +58,7 @@ export default {
     load (e) {
       this.map = e.map
       // this.rotateCamera(0)
-      this.drawRadius()
+      // this.drawRadius()
     },
     rotateCamera (timestamp) {
       this.map.rotateTo((timestamp / 100) % 360, { duration: 0 })
@@ -73,7 +75,7 @@ export default {
       return coordinates
     },
     createRadius (center, radiusInKm, points) {
-      if (!points) points = 64
+      if (!points) points = 128
       let coords = {
         latitude: center[1],
         longitude: center[0]
@@ -105,15 +107,15 @@ export default {
       }
     },
     drawRadius () {
-      this.map.addSource('polygon', this.createRadius(this.center, 0.5))
+      this.map.addSource('polygon', this.createRadius(this.center, 5))
       this.map.addLayer({
         'id': 'polygon',
         'type': 'fill',
         'source': 'polygon',
         'layout': {},
         'paint': {
-          'fill-color': 'blue',
-          'fill-opacity': 0.6
+          'fill-color': '#fff',
+          'fill-opacity': 0.8
         }
       })
     }
@@ -125,7 +127,8 @@ export default {
   .map
     #map
       width 100vw
-      height 100vh
+      // height 100vh
+      height calc(100vh - 38px)
       /deep/ .con-vs-chip
         margin 0 !important
         box-shadow 0 4px 25px 0 rgba(0,0,0,.1)
@@ -141,7 +144,9 @@ export default {
         background transparent
         padding 0
         box-shadow none
+  /*
     @media screen and (max-width: 600px)
       #map
         height calc(100vh - 38px)
+  */
 </style>
