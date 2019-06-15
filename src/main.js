@@ -19,6 +19,12 @@ let earth = '#035129'
 let lightning = '#7b0082'
 let fire = '#911b1b'
 let water = '#044d56'
+// vue
+Vue.prototype.wind = wind
+Vue.prototype.earth = earth
+Vue.prototype.lightning = lightning
+Vue.prototype.fire = fire
+Vue.prototype.water = water
 // global css variables
 document.documentElement.style.setProperty('--wind', wind)
 document.documentElement.style.setProperty('--earth', earth)

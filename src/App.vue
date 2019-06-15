@@ -39,6 +39,7 @@ export default {
     margin 0
     padding 0
     font-family 'Open Sans', sans-serif
+  #app
     h1, h2, h3, h4, h5, h6
       font-family 'Montserrat', sans-serif
     .vs-button.includeIconOnly
@@ -56,33 +57,7 @@ export default {
       margin-top 38px // navbar
       width 100vw // no sidebar
       margin-left 0
-      /deep/ .con-vs-card
-        &.wind
-          background-color var(--wind)
-          color #000
-        &.fire
-          background-color var(--fire)
-          color #fff
-        &.earth
-          background-color var(--earth)
-          color #fff
-        &.lightning
-          background-color var(--lightning)
-          color #fff
-        &.water
-          background-color var(--water)
-          color #fff
-        img
-          position relative
-          float left
-          width 100%
-          height 250px
-          background-position 50% 50%
-          background-repeat no-repeat
-          background-size cover
-          object-fit cover
-          object-position 50% 20%
-  /*
+    /*
       height 100vh // no topbar
       margin-top 0 // no topbar
       width calc(100vw - $sidebar) // sidebar
@@ -91,8 +66,6 @@ export default {
       display block
     #navbar
       display none
-  */
-  /*
     // media queries
     @media screen and (max-width: 600px)
       #content
@@ -105,5 +78,23 @@ export default {
         display none
       #navbar
         display block
-  */
+    */
+      // cards
+      /deep/ .con-vs-card
+        img
+          position relative
+          float left
+          width 100%
+          height 250px
+          background-position 50% 50%
+          background-repeat no-repeat
+          background-size cover
+          object-fit cover
+          object-position 50% 20%
+      /deep/ .vs-card--header
+        display flex
+        justify-content center
+        align-items center
+        .con-vs-chip
+          margin 0
 </style>

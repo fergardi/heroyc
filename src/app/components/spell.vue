@@ -2,11 +2,11 @@
   .spell
     vs-card(actionable)
       div(slot="header")
-        vs-chip(:color='rgba(255,0,0,0)') {{ info.name }}
+        vs-chip(:color="this[info.color]") {{ info.name | t }}
       div(slot="media")
-        img(:src="info.image")
+        img(:src="require(`@/assets/img/spells/${info.image}.jpg`)")
       div
-        span Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        span {{ info.description | t }}
         vs-progress(:percent="info.researched * 100 / info.turns", color="primary")
       div.extra(slot="extra-content")
         vs-chip(color="warning")
@@ -54,20 +54,4 @@ export default {
       display flex
       justify-content center
       flex-wrap wrap
-    /deep/ .con-vs-card
-      &.wind
-        background-color var(--wind)
-        color #000
-      &.fire
-        background-color var(--fire)
-        color #fff
-      &.earth
-        background-color var(--earth)
-        color #fff
-      &.lightning
-        background-color var(--lightning)
-        color #fff
-      &.water
-        background-color var(--water)
-        color #fff
 </style>

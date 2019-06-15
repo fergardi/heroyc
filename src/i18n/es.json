@@ -40,5 +40,17 @@
       "name": "Fortalezas",
       "description": "Lorem Ipsum"
     }
+  },
+  "spell": {
+    "fire": {
+      "fireball": {
+        "name": "Bola de Fuego",
+        "description": "Lorem Ipsum"
+      },
+      "firewall": {
+        "name": "Muro de Fuego",
+        "description": "Lorem Ipsum"
+      }
+    }
   }
 }

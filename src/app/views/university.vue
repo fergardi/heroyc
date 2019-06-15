@@ -33,14 +33,8 @@ export default {
     this.$vs.loading({ type: 'radius', text: 'Loading...' })
     setTimeout(() => {
       this.spells = [
-        { id: 1, name: 'lbl_spell_fire_fireball', image: 'https://pp.userapi.com/c638117/v638117348/22ece/6FjIKxpnUh0.jpg', color: 'fire', level: 1, completed: false, turns: 300, researched: 30 },
-        { id: 2, name: 'lbl_spell_fire_firewall', image: 'http://media.wizards.com/2017/images/daily/cardart_EMA_Pyroblast_Lg.jpg', color: 'fire', level: 1, completed: false, turns: 300, researched: 30 }
-        /*
-        { id: 3, name: 'Hechizo', color: 'earth' },
-        { id: 3, name: 'Hechizo', color: 'lightning' },
-        { id: 3, name: 'Hechizo', color: 'fire' },
-        { id: 3, name: 'Hechizo', color: 'water' }
-        */
+        { name: 'spell.fire.fireball.name', description: 'spell.fire.fireball.description', image: 'img_spell_fireball', color: 'fire', level: 1, completed: false, turns: 300, researched: 30 },
+        { name: 'spell.fire.firewall.name', description: 'spell.fire.fireball.description', image: 'img_spell_fire_circle', color: 'fire', level: 1, completed: false, turns: 300, researched: 30 }
       ]
       this.$vs.loading.close()
     }, 2000)
